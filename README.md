@@ -12,6 +12,7 @@ $ aero list
 address-private
 address-public
 instance-name
+region
 zone
 
 $ aero read address-private

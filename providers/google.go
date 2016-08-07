@@ -83,6 +83,18 @@ func InitGoogle() structs.Provider {
 					return valueSplit[3], nil
 				},
 			},
+			structs.KEY_REGION: structs.MetadataItem{
+				Url: "/computeMetadata/v1/instance/zone",
+				ParseFunc: func(v interface{}) (string, error) {
+					// value is in form "projects/<project-id>/zones/<zone>"
+					value := v.(string)
+					valueSplit := strings.Split(value, "/")
+
+					// value is in form "<region>-<location><number>-<zone-letter>"
+					zoneValue := valueSplit[3]
+					return fmt.Sprintf("%s", zoneValue[0:len(zoneValue)-2]), nil
+				},
+			},
 		},
 	}
 	google := Google{Mapping: mapping}

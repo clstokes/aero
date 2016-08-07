@@ -34,6 +34,11 @@ func (a Amazon) Read(s string) (string, error) {
 		return "", err
 	}
 
+	if metadataItem.ParseFunc != nil {
+		parsedValue, err := metadataItem.ParseFunc(value)
+		return parsedValue, err
+	}
+
 	return value, nil
 }
 
@@ -50,6 +55,14 @@ func InitAmazon() structs.Provider {
 			},
 			structs.KEY_INSTANCE_NAME: structs.MetadataItem{
 				Url: "/latest/meta-data/instance-id",
+			},
+			structs.KEY_REGION: structs.MetadataItem{
+				Url: "/latest/meta-data/placement/availability-zone",
+				ParseFunc: func(v interface{}) (string, error) {
+					// value is in form "<region>-<location>-<number><zone-letter>"
+					value := v.(string)
+					return fmt.Sprintf("%s", value[0:len(value)-1]), nil
+				},
 			},
 			structs.KEY_ZONE: structs.MetadataItem{
 				Url: "/latest/meta-data/placement/availability-zone",
