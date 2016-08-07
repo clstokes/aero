@@ -11,6 +11,7 @@ amazon
 $ aero list
 address-private
 address-public
+instance-name
 zone
 
 $ aero read address-private
