@@ -48,6 +48,9 @@ func InitAmazon() structs.Provider {
 			structs.KEY_ADDRESS_PUBLIC: structs.MetadataItem{
 				Url: "/latest/meta-data/public-ipv4",
 			},
+			structs.KEY_INSTANCE_NAME: structs.MetadataItem{
+				Url: "/latest/meta-data/instance-id",
+			},
 			structs.KEY_ZONE: structs.MetadataItem{
 				Url: "/latest/meta-data/placement/availability-zone",
 			},

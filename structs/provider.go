@@ -12,13 +12,15 @@ type ProviderMapping struct {
 }
 
 const (
-	KEY_ZONE            = "zone"
 	KEY_ADDRESS_PRIVATE = "address-private"
 	KEY_ADDRESS_PUBLIC  = "address-public"
+	KEY_INSTANCE_NAME   = "instance-name"
+	KEY_ZONE            = "zone"
 )
 
 var AllKeys = []string{
 	KEY_ADDRESS_PRIVATE,
 	KEY_ADDRESS_PUBLIC,
+	KEY_INSTANCE_NAME,
 	KEY_ZONE,
 }
