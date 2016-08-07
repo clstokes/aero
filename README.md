@@ -1,9 +1,5 @@
 # aero
 
-> Aeromancy is divination conducted by interpreting atmospheric conditions.
-
-— _https://en.wikipedia.org/wiki/Aeromancy_
-
 `aero` provides instance metadata in a cloud-agnostic manner.
 
 ## Usage
@@ -24,9 +20,17 @@ $ aero read zone
 us-east-1a
 ```
 
-## Supported Providers
+## FAQ
+
+### What providers are supported?
 
 ```
 amazon
-googlem
+google
 ```
+
+### What's with the name?
+
+> Aeromancy is divination conducted by interpreting atmospheric conditions.
+
+— _https://en.wikipedia.org/wiki/Aeromancy_
