@@ -1,5 +1,8 @@
 default:
-	go build -o bin/aero
+	sh -c "'scripts/build.sh'"
+
+release: fmt
+	sh -c "'scripts/release.sh'"
 
 fmt:
 	gofmt -w .
