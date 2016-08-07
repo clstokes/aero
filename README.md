@@ -11,7 +11,7 @@ amazon
 $ aero list
 address-private
 address-public
-instance-name
+instance
 region
 zone
 

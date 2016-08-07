@@ -14,7 +14,7 @@ type ProviderMapping struct {
 const (
 	KEY_ADDRESS_PRIVATE = "address-private"
 	KEY_ADDRESS_PUBLIC  = "address-public"
-	KEY_INSTANCE_NAME   = "instance-name"
+	KEY_INSTANCE_NAME   = "instance"
 	KEY_REGION          = "region"
 	KEY_ZONE            = "zone"
 )
