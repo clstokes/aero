@@ -24,5 +24,5 @@ for PLATFORM in $(find ./pkg -mindepth 1 -maxdepth 1 -type d); do
 done
 
 pushd pkg >/dev/null 2>&1
-shasum -a256 *.zip > aero_SHA256SUMS
+shasum -a256 *.zip > aero_${VERSION}_SHA256SUMS
 popd >/dev/null 2>&1
