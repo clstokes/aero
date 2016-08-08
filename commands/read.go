@@ -43,6 +43,6 @@ func (c *ReadCommand) Run(args []string) int {
 		return 1
 	}
 
-	fmt.Printf("%s", metadataValue)
+	fmt.Printf("%s\n", metadataValue)
 	return 0
 }
