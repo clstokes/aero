@@ -9,6 +9,8 @@ import (
 	"os"
 )
 
+const VERSION = "0.1.0"
+
 type Factory func() structs.Provider
 
 var fingerprinters = map[string]Factory{
@@ -26,9 +28,10 @@ func Run(args []string) int {
 	cli := &cli.CLI{
 		Args:     os.Args[1:],
 		Commands: commands.Commands(&currentProvider),
+		Version:  VERSION,
 	}
 
-	// TODO: This is passed above but set here - feel wonky.
+	// TODO: This is passed above but set here - feels wonky.
 	currentProvider = getCurrentProvider()
 	if currentProvider == nil {
 		fmt.Printf("Unknown provider.\n")
