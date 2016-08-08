@@ -5,6 +5,13 @@
 ## Usage
 
 ```
+$ aero
+usage: app [--version] [--help] <command> [<args>]
+
+Available commands are:
+    list    List available metadata keys
+    read    Read a metadata value
+
 $ aero list
 address-private
 address-public
