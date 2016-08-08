@@ -25,11 +25,6 @@ func Commands(currentProvider *structs.Provider) map[string]cli.CommandFactory {
 				Meta: meta,
 			}, nil
 		},
-		"which": func() (cli.Command, error) {
-			return &WhichCommand{
-				Meta: meta,
-			}, nil
-		},
 	}
 
 	return commands

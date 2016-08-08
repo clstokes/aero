@@ -5,15 +5,16 @@
 ## Usage
 
 ```
-$ aero which
-amazon
-
 $ aero list
 address-private
 address-public
 instance
+provider
 region
 zone
+
+$ aero read provider
+amazon
 
 $ aero read address-private
 10.0.0.12

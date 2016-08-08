@@ -28,7 +28,7 @@ func Run(args []string) int {
 		Commands: commands.Commands(&currentProvider),
 	}
 
-	// TODO: This is passed above but set here. Kind of wonky...
+	// TODO: This is passed above but set here - feel wonky.
 	currentProvider = getCurrentProvider()
 	if currentProvider == nil {
 		fmt.Printf("Unknown provider.\n")
@@ -48,7 +48,6 @@ func getCurrentProvider() structs.Provider {
 	for _, val := range fingerprinters {
 		provider := val()
 		if provider.IsCurrentProvider() {
-			//fmt.Printf("[DEBUG] Current provider: %s", key)
 			return provider
 		}
 	}

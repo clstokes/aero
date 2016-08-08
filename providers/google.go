@@ -6,12 +6,16 @@ import (
 	"strings"
 )
 
+const (
+	NAME_GOOGLE = "google"
+)
+
 type Google struct {
 	Mapping structs.ProviderMapping
 }
 
 func (g Google) Name() string {
-	return "google"
+	return NAME_GOOGLE
 }
 
 func (g Google) IsCurrentProvider() bool {
@@ -67,6 +71,13 @@ func InitGoogle() structs.Provider {
 					}
 
 					return valueSplit[0], nil
+				},
+			},
+			structs.KEY_PROVIDER: structs.MetadataItem{
+				// kind of a hack to not introduce another special field/function
+				Url: "/computeMetadata/v1/instance/hostname",
+				ParseFunc: func(v interface{}) (string, error) {
+					return NAME_GOOGLE, nil
 				},
 			},
 			structs.KEY_ZONE: structs.MetadataItem{

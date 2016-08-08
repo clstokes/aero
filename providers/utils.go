@@ -13,7 +13,6 @@ func GetMetadata(url string, headers map[string]string) (string, error) {
 		Timeout: time.Duration(5 * time.Second), // TODO: make configurable?
 	}
 
-	//fmt.Printf("DEBUG: Using URL [%s]",url)
 	req, err := http.NewRequest("GET", url, nil)
 
 	for k, v := range headers {

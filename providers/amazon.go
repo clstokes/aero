@@ -5,12 +5,16 @@ import (
 	"github.com/clstokes/aero/structs"
 )
 
+const (
+	NAME_AMAZON = "amazon"
+)
+
 type Amazon struct {
 	Mapping structs.ProviderMapping
 }
 
 func (a Amazon) Name() string {
-	return "amazon"
+	return NAME_AMAZON
 }
 
 func (a Amazon) IsCurrentProvider() bool {
@@ -55,6 +59,13 @@ func InitAmazon() structs.Provider {
 			},
 			structs.KEY_INSTANCE_NAME: structs.MetadataItem{
 				Url: "/latest/meta-data/instance-id",
+			},
+			structs.KEY_PROVIDER: structs.MetadataItem{
+				// kind of a hack to not introduce another special field/function
+				Url: "/latest/meta-data/instance-id",
+				ParseFunc: func(v interface{}) (string, error) {
+					return NAME_AMAZON, nil
+				},
 			},
 			structs.KEY_REGION: structs.MetadataItem{
 				Url: "/latest/meta-data/placement/availability-zone",
