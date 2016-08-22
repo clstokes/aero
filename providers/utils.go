@@ -2,6 +2,7 @@ package providers
 
 import (
 	"fmt"
+	"github.com/clstokes/aero/structs"
 	"io/ioutil"
 	"net/http"
 	"time"
@@ -36,4 +37,10 @@ func GetMetadata(url string, headers map[string]string) (string, error) {
 	}
 
 	return string(body), nil
+}
+
+func ChangeProviderMappingDefaults(mapping *structs.ProviderMapping, defaults *structs.ProviderMapping) {
+	if defaults.MetadataAddress != "" {
+		mapping.MetadataAddress = defaults.MetadataAddress
+	}
 }

@@ -4,4 +4,7 @@ default:
 fmt:
 	gofmt -w .
 
+test:
+	go test $(shell go list ./...)
+
 .PHONY: default

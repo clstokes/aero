@@ -6,16 +6,12 @@ import (
 	"strings"
 )
 
-const (
-	NAME_GOOGLE = "google"
-)
-
 type Google struct {
 	Mapping structs.ProviderMapping
 }
 
 func (g Google) Name() string {
-	return NAME_GOOGLE
+	return structs.NAME_GOOGLE
 }
 
 func (g Google) IsCurrentProvider() bool {
@@ -32,7 +28,7 @@ func (g Google) Read(s string) (string, error) {
 		return "", fmt.Errorf("No lookup support for key [%v]", s)
 	}
 
-	url := "http://" + g.Mapping.MetadataAddress + metadataItem.Url
+	url := g.Mapping.MetadataAddress + metadataItem.Url
 	value, err := GetMetadata(url, map[string]string{"Metadata-Flavor": "Google"})
 
 	if err != nil {
@@ -49,9 +45,9 @@ func (g Google) Read(s string) (string, error) {
 
 // https://cloud.google.com/compute/docs/metadata
 // Metadata-Flavor: Google
-func InitGoogle() structs.Provider {
+func InitGoogle(defaults structs.ProviderMapping) structs.Provider {
 	mapping := structs.ProviderMapping{
-		MetadataAddress: "169.254.169.254",
+		MetadataAddress: "http://169.254.169.254",
 		MetadataItems: map[string]structs.MetadataItem{
 			structs.KEY_ADDRESS_PRIVATE: structs.MetadataItem{
 				Url: "/computeMetadata/v1/instance/network-interfaces/0/ip",
@@ -77,7 +73,7 @@ func InitGoogle() structs.Provider {
 				// kind of a hack to not introduce another special field/function
 				Url: "/computeMetadata/v1/instance/hostname",
 				ParseFunc: func(v interface{}) (string, error) {
-					return NAME_GOOGLE, nil
+					return structs.NAME_GOOGLE, nil
 				},
 			},
 			structs.KEY_ZONE: structs.MetadataItem{

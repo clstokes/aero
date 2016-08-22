@@ -11,11 +11,11 @@ import (
 
 const VERSION = "v0.1.0"
 
-type Factory func() structs.Provider
+type Factory func(defaults structs.ProviderMapping) structs.Provider
 
 var fingerprinters = map[string]Factory{
-	"amazon": providers.InitAmazon,
-	"google": providers.InitGoogle,
+	structs.NAME_AMAZON: providers.InitAmazon,
+	structs.NAME_GOOGLE: providers.InitGoogle,
 }
 
 var currentProvider structs.Provider
@@ -49,7 +49,8 @@ func Run(args []string) int {
 
 func getCurrentProvider() structs.Provider {
 	for _, val := range fingerprinters {
-		provider := val()
+		emptyDefaults := new(structs.ProviderMapping)
+		provider := val(*emptyDefaults)
 		if provider.IsCurrentProvider() {
 			return provider
 		}
