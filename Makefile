@@ -1,6 +1,9 @@
 default: test
 
-dev:
+deps:
+	go get ./...
+
+dev: deps
 	sh -c "'scripts/build.sh'"
 
 fmt:
