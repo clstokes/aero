@@ -1,4 +1,6 @@
-default:
+default: test
+
+dev:
 	sh -c "'scripts/build.sh'"
 
 fmt:
