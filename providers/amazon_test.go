@@ -20,8 +20,8 @@ var TEST_DATA = map[string]string{
 	structs.KEY_ZONE:            "us-east-1d",
 }
 
-func TestName(t *testing.T) {
-	server, amazon := getServerAndProvider()
+func TestAmazonName(t *testing.T) {
+	server, amazon := getAmazonServerAndProvider()
 	defer server.Close()
 
 	value := amazon.Name()
@@ -30,8 +30,8 @@ func TestName(t *testing.T) {
 	}
 }
 
-func TestIsCurrentProvider(t *testing.T) {
-	server, amazon := getServerAndProvider()
+func TestAmazonIsCurrentProvider(t *testing.T) {
+	server, amazon := getAmazonServerAndProvider()
 	defer server.Close()
 
 	if !amazon.IsCurrentProvider() {
@@ -39,8 +39,8 @@ func TestIsCurrentProvider(t *testing.T) {
 	}
 }
 
-func TestRead(t *testing.T) {
-	server, amazon := getServerAndProvider()
+func TestAmazonReadAll(t *testing.T) {
+	server, amazon := getAmazonServerAndProvider()
 	defer server.Close()
 
 	for key, testValue := range TEST_DATA {
@@ -56,7 +56,7 @@ func TestRead(t *testing.T) {
 
 }
 
-func getServerAndProvider() (*httptest.Server, structs.Provider) {
+func getAmazonServerAndProvider() (*httptest.Server, structs.Provider) {
 	server := httptest.NewServer(http.FileServer(http.Dir(DIR_FIXTURES)))
 	mapping := structs.ProviderMapping{
 		MetadataAddress: server.URL,
