@@ -104,6 +104,7 @@ func InitGoogle(defaults structs.ProviderMapping) structs.Provider {
 			},
 		},
 	}
+	ChangeProviderMappingDefaults(&mapping, &defaults)
 	google := Google{Mapping: mapping}
 	return google
 }

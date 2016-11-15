@@ -1,0 +1,1 @@
+{"networkInterface":[{"accessConfiguration":[{"externalIp":"104.155.153.127","type":"ONE_TO_ONE_NAT"}],"ip":"10.240.0.2","mac":"42:01:0a:f0:00:02","network":"projects/123456789012/networks/default"}]}
