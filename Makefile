@@ -10,6 +10,6 @@ fmt:
 	gofmt -w .
 
 test:
-	go test $(shell go list ./...)
+	go test -v $(shell go list ./...)
 
 .PHONY: default
