@@ -1,5 +1,7 @@
 # aero
 
+[![Build Status](https://travis-ci.org/clstokes/aero.svg?branch=master)](https://travis-ci.org/clstokes/aero)
+
 `aero` provides instance metadata in a cloud-agnostic manner.
 
 ## Usage
