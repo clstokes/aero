@@ -28,7 +28,7 @@ func main() {
 
 func Run(args []string) int {
 	cli := &cli.CLI{
-		Args:     os.Args[1:],
+		Args:     args,
 		Commands: commands.Commands(&currentProvider),
 		Version:  VERSION,
 	}
